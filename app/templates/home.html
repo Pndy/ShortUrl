@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1 class="cover-heading">Enter url to shorten.</h1>
+  <form action="" method="post">
+    {{ form.hidden_tag() }}
+    <div class="input-group mb-3">
+      {{ form.url(size=120, class_="form-control") }}
+      <div class="input-group-append">
+        {{ form.submit(class_="btn btn-outline-secondary") }}
+      </div>
+    </div>
+    {% for error in form.url.errors %}
+    <div style="color: red;">[{{ error }}]</div>
+    {% endfor %}
+  </form>
+{% endblock %}

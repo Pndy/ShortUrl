@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="containter">
+    <div class="card text-white bg-dark">
+    <h1>Your URL's</h1>
+      <div class="card-body">
+        <div class="table-wrapper-2">
+          <table class="table text-left table-responsive-md">
+            <thead>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Url</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for url in urls %}
+              <tr>
+                <th scope="row"> {{ url.var_id }}</th>
+                <th>
+                  <input type="text" class="form-control" value="{{ url.url }}" readonly>
+                </th>
+                <th>
+                  <a class="btn btn-primary" href="{{ url_for('info_on_id', varid=url.var_id) }}" role="button">Info</a>
+                  <a class="btn btn-danger" href="#" role="button">Delete</a>
+                </th>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+{% endblock %}
