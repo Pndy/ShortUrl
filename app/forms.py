@@ -5,16 +5,16 @@ from app.models import User
 
 
 class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()], render_kw={"placeholder": "Username"})
-    password = PasswordField('Password', validators=[DataRequired()], render_kw={"placeholder": "Password"})
+    username = StringField('Username', validators=[DataRequired(), Length(min=3, max=24)], render_kw={"placeholder": "Username"})
+    password = PasswordField('Password', validators=[DataRequired(), Length(min=3, max=64)], render_kw={"placeholder": "Password"})
     remember_me = BooleanField('Remember Me')
     submit = SubmitField('Log In')
 
 
 class RegistrationForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()], render_kw={"placeholder": "Username"})
+    username = StringField('Username', validators=[DataRequired(), Length(min=3, max=24)], render_kw={"placeholder": "Username"})
     email = StringField('Email', validators=[DataRequired(), Email()], render_kw={"placeholder": "Email account"})
-    password = PasswordField('Password', validators=[DataRequired()], render_kw={"placeholder": "Password"})
+    password = PasswordField('Password', validators=[DataRequired(), Length(min=3, max=64)], render_kw={"placeholder": "Password"})
     password2 = PasswordField(
         'Repeat password', validators=[DataRequired(), EqualTo('password')],
         render_kw={"placeholder": "Repeat password"})
